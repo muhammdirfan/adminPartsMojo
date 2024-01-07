@@ -37,7 +37,7 @@ const Navbar = (props) => {
             {brandText}
           </Link>
         </div>
-        <p className="shrink text-[33px] capitalize text-navy-700 dark:text-white">
+        <p className="shrink text-[33px] capitalize text-navy-700 dark:text-white pt-10">
           <Link
             to="#"
             className="font-bold capitalize hover:text-navy-700 dark:hover:text-white"

@@ -18,6 +18,7 @@ import {
   MdPerson,
   MdLock,
 } from "react-icons/md";
+import AllParts from "views/admin/AllParts";
 
 const routes = [
   {
@@ -33,6 +34,14 @@ const routes = [
     path: "nft-marketplace",
     icon: <MdOutlineShoppingCart className="h-6 w-6" />,
     component: <NFTMarketplace />,
+    secondary: true,
+  },
+  {
+    name: "All Parts",
+    layout: "/admin",
+    path: "all-parts",
+    // icon: <MdOutlineShoppingCart className="h-6 w-6" />,
+    component: <AllParts />,
     secondary: true,
   },
   {
