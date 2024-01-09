@@ -17,21 +17,21 @@ export default function CategoriesTable(props) {
   // Define custom action renderers
   const renderEditButton = (params) => (
     <MdEdit
-      className="mx-1 h-6 w-6 rounded p-1 hover:cursor-pointer hover:bg-gray-300"
+      className="mx-3 h-6 w-6 rounded p-1 hover:cursor-pointer bg-gray-200 hover:bg-gray-300"
       onClick={() => handleModal("Edit", params.row.id)}
     />
   );
 
   const renderDeleteButton = (params) => (
     <MdDelete
-      className="mx-1 h-6 w-6 rounded p-1 hover:cursor-pointer hover:bg-gray-300"
+      className="mx-3 h-6 w-6 rounded p-1 hover:cursor-pointer bg-gray-200 hover:bg-gray-300"
       onClick={() => handleModal("Delete", params.row.id)}
     />
   );
 
   const renderViewButton = (params) => (
     <IoMdEye
-      className="mx-1 h-6 w-6 rounded p-1 hover:cursor-pointer hover:bg-gray-300"
+      className="mx-3 h-6 w-6 rounded p-1 hover:cursor-pointer bg-gray-200 hover:bg-gray-300"
       onClick={() => handleModal("Delete", params.row.id)}
     />
   );
@@ -54,9 +54,9 @@ export default function CategoriesTable(props) {
       {
         field: "actions",
         headerName: "ACTIONS",
-        width: 120,
+        width: 150,
         renderCell: (params) => (
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div style={{ display: "flex", justifyContent: "start" }}>
             {renderViewButton(params)}
             {renderEditButton(params)}
             {renderDeleteButton(params)}
@@ -72,15 +72,15 @@ export default function CategoriesTable(props) {
     <>
       <div
         style={{
-          height: 700,
+          height: 640,
           width: "100%",
           backgroundColor: "#fff",
-          padding: "10px 10px 40px 10px",
+          padding: "0 10px",
           borderRadius: "10px",
         }}
       >
-        <div className="flex w-full items-center justify-between text-xl font-bold text-navy-700 dark:text-white">
-          <p className="pb-3">{tableHeader}</p>
+        <div className="text-xl font-bold text-navy-700 dark:text-white">
+          <p className="px-1 py-5">{tableHeader}</p>
         </div>
         {tableData?.length ? (
           <DataGrid

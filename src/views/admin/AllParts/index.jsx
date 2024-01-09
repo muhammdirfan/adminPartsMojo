@@ -26,8 +26,14 @@ const allPartsData = [
   },
   {
     id: 2,
-    name: "Part2",
-    modal: "574",
+    name: "Part 2",
+    modal: "90099",
+    description: "dsdgdfgdf",
+  },
+  {
+    id: 3,
+    name: "Part 3",
+    modal: "500",
     description: "dsdgdfgdf",
   },
 ];
