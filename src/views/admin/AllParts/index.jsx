@@ -20,8 +20,8 @@ import Notify from "simple-notify";
 const allPartsData = [
   {
     id: 1,
-    name: "Part1",
-    modal: "574",
+    name: "Part 1",
+    modal: "5234",
     description: "dsdgdfgdf",
   },
   {
