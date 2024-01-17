@@ -19,6 +19,8 @@ import {
   MdLock,
 } from "react-icons/md";
 import AllParts from "views/admin/AllParts";
+import ManageParts from "views/admin/ManageParts";
+import Orders from "views/admin/Orders";
 
 const routes = [
   {
@@ -42,6 +44,22 @@ const routes = [
     path: "all-parts",
     // icon: <MdOutlineShoppingCart className="h-6 w-6" />,
     component: <AllParts />,
+    secondary: true,
+  },
+  {
+    name: "Manage Parts",
+    layout: "/admin",
+    path: "manage-parts",
+    icon: <MdOutlineShoppingCart className="h-6 w-6" />,
+    component: <ManageParts />,
+    secondary: true,
+  },
+  {
+    name: "All Orders",
+    layout: "/admin",
+    path: "orders",
+    // icon: <MdOutlineShoppingCart className="h-6 w-6" />,
+    component: <Orders />,
     secondary: true,
   },
   {
