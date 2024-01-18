@@ -21,6 +21,7 @@ import {
 import AllParts from "views/admin/AllParts";
 import ManageParts from "views/admin/ManageParts";
 import Orders from "views/admin/Orders";
+import PartDetails from "views/admin/PartDetails";
 
 const routes = [
   {
@@ -44,6 +45,14 @@ const routes = [
     path: "all-parts",
     // icon: <MdOutlineShoppingCart className="h-6 w-6" />,
     component: <AllParts />,
+    secondary: true,
+  },
+  {
+    name: "Part Details",
+    layout: "/admin",
+    path: "part-details",
+    // icon: <MdOutlineShoppingCart className="h-6 w-6" />,
+    component: <PartDetails />,
     secondary: true,
   },
   {

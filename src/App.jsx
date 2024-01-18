@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import "./app.css"
 
 import RtlLayout from "layouts/rtl";
 import AdminLayout from "layouts/admin";
