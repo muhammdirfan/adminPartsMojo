@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { fetchPartsDetail } from "../../../services/partsApis";
 import { FiSearch } from "react-icons/fi";
 import JSONbig from "json-bigint";
+import Slider from "components/Slider";
+import DisplayText from "components/DisplayText";
 
 const PartDetails = () => {
   const [PartSearchValue, setPartSearchValue] = useState();
@@ -14,17 +16,8 @@ const PartDetails = () => {
       setLoading(true);
       const partDetails = await fetchPartsDetail(searchValue);
       setPartDetails(partDetails);
-      console.log(partDetails, "partDetails");
       setLoading(false);
       const imageArray = JSON?.parse(partDetails?.images);
-      //   const jsonStringArray = partDetails.split('}{').map((jsonString, index, array) => {
-      //     // Add missing curly braces to each JSON string
-      //     const jsonStringWithBraces = `{${jsonString}${index < array.length - 1 ? '}' : ''}`;
-      //     return jsonStringWithBraces;
-      //   });
-      //   // Parse each JSON string into an array of objects using json-bigint library
-      //   const parsedData = jsonStringArray.map(jsonString => JSONbig.parse(jsonString));
-      //   console.log(partDetails, parsedData?.text, "partDetails");
       setPartImages(imageArray);
     } catch (e) {
       console.log(e);
@@ -39,7 +32,7 @@ const PartDetails = () => {
 
   const handleSearch = () => {
     fetchPartDetails(PartSearchValue);
-    setPartSearchValue("")
+    setPartSearchValue("");
   };
 
   return (
@@ -54,7 +47,7 @@ const PartDetails = () => {
             placeholder="Part Number Search..."
             value={PartSearchValue}
             onChange={(e) => setPartSearchValue(e.target.value)}
-            class="block h-full w-full rounded-full bg-white py-2 text-lg font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white"
+            class="block h-full w-full rounded-full border-0 bg-white py-2 text-lg font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white"
           />
         </div>
         <button
@@ -65,48 +58,89 @@ const PartDetails = () => {
         </button>
       </div>
       {loading ? (
-        <div className="flex justify-center items-center h-96">
+        <div className="flex h-96 items-center justify-center">
           <p>loading...</p>
         </div>
-      ) : (
+      ) : PartDetails?.partname ? (
         <div className="mt-8">
-          <div className="grid grid-cols-12 gap-5">
+          <div className="grid grid-cols-12 gap-5 items-start">
             <div className="col-span-12 md:col-span-5">
-              {PartImages?.map((imgPath, index) => (
-                <img
-                  key={index}
-                //   src={imgPath}
-                  src={
-                    "https://www.rockauto.com/Newsletter/images/6415tomStory.jpg"
-                  }
-                  alt={`Image ${index + 1}`}
-                  className="mt-5"
-                />
-              ))}
+              <Slider items={PartImages} />
             </div>
             <div className="col-span-12 md:col-span-7">
               <div className="grid grid-cols-12 gap-5">
-                <div className="col-span-12 md:col-span-6">
-                  <p className="py-1">
-                    Part Name:
-                    <span className="pl-2 font-semibold">
-                      {PartDetails?.partname}
-                    </span>
-                  </p>
-                  <p className="py-1">
-                    Part Number:
-                    <span className="pl-2 font-semibold">
-                      {PartDetails?.partno}
-                    </span>
-                  </p>
+                <div className="col-span-12 md:col-span-5">
+                  <DisplayText
+                    title="Part Name"
+                    value={PartDetails?.partname || "No Data"}
+                  />
+                  <DisplayText
+                    title="Part Number"
+                    value={PartDetails?.partno || "No Data"}
+                  />
+                  <DisplayText title="SKU" value={"No Data"} />
+                  <DisplayText
+                    title="Specifications"
+                    value={PartDetails?.Specifications || "No Data"}
+                  />
+                  <DisplayText
+                    title="Warranty"
+                    value={PartDetails?.Warranty || "No Data"}
+                  />
+                  <DisplayText
+                    title="Engine"
+                    value={PartDetails?.engine || "No Data"}
+                  />
+                  <DisplayText
+                    title="Group Name"
+                    value={PartDetails?.groupname || "No Data"}
+                  />
+                  <DisplayText
+                    title="Group Number"
+                    value={PartDetails?.groupno || "No Data"}
+                  />
+                  <DisplayText
+                    title="Car Code"
+                    value={PartDetails?.carcode || "No Data"}
+                  />
+                  <DisplayText
+                    title="Make"
+                    value={PartDetails?.make || "No Data"}
+                  />
                 </div>
-                <div className="col-span-12 md:col-span-6">
-                  <p className="py-1">
-                    Part Description:
-                    <span className="pl-2 font-semibold">
-                      {PartDetails?.PartDescription}
-                    </span>
-                  </p>
+                <div className="col-span-12 md:col-span-7">
+                  <DisplayText
+                    title="Brand Name"
+                    value={PartDetails?.brandname || "No Data"}
+                  />
+                  <DisplayText
+                    title="Part Description"
+                    value={PartDetails?.PartDescription || "No Data"}
+                  />
+                  <DisplayText
+                    title="Model"
+                    value={PartDetails?.model || "No Data"}
+                  />
+                  <DisplayText
+                    title="Part Type"
+                    value={PartDetails?.parttype || "No Data"}
+                  />
+                  <DisplayText
+                    title="PK"
+                    value={PartDetails?.pk || "No Data"}
+                  />
+                  <DisplayText
+                    title="OEM"
+                    value={PartDetails?.OEM || "No Data"}
+                  />
+                  <DisplayText
+                    title="Safety"
+                    value={PartDetails?.safety || "No Data"}
+                  />
+                  <DisplayText
+                    title="Year"
+                    value={PartDetails?.year || "No Data"}
+                  />
                 </div>
               </div>
               <div className="col-span-12 mt-3">
@@ -116,6 +150,10 @@ const PartDetails = () => {
               </div>
             </div>
           </div>
+        </div>
+      ) : (
+        <div className="flex h-96 items-center justify-center">
+          <p>No Part Found</p>
         </div>
       )}
     </div>
