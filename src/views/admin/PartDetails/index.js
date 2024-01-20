@@ -43,7 +43,7 @@ const PartDetails = () => {
             <FiSearch className="h-4 w-4 text-gray-400 dark:text-white" />
           </p>
           <input
-            type="number"
+            type="text"
             placeholder="Part Number Search..."
             value={PartSearchValue}
             onChange={(e) => setPartSearchValue(e.target.value)}
