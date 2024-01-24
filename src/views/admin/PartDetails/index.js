@@ -6,7 +6,7 @@ import DisplayText from "components/DisplayText";
 import "./customStyles.css"
 
 const PartDetails = () => {
-  const [PartSearchValue, setPartSearchValue] = useState('30130');
+  const [PartSearchValue, setPartSearchValue] = useState();
   const [PartDetails, setPartDetails] = useState();
   const [PartImages, setPartImages] = useState([]);
   const [loading, setLoading] = useState(false);
