@@ -1,0 +1,25 @@
+
+
+.moreinfotable {
+    width: 100% !important;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.moreinfotable tbody tr:first-child {
+    background-color: #36c !important;
+    color: #fff;
+}
+
+.moreinfotable tbody tr:nth-child(even) {
+    background-color: #ddd; 
+}
+
+.moreinfotable tbody tr:nth-child(odd) {
+    background-color: #ccc;
+}
+
+.moreinfotable tbody tr td {
+    padding: 3px 8px;
+}

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { fetchPartsDetail } from "../../../services/partsApis";
 import { FiSearch } from "react-icons/fi";
-import JSONbig from "json-bigint";
 import Slider from "components/Slider";
 import DisplayText from "components/DisplayText";
+import "./customStyles.css"
 
 const PartDetails = () => {
-  const [PartSearchValue, setPartSearchValue] = useState();
+  const [PartSearchValue, setPartSearchValue] = useState('30130');
   const [PartDetails, setPartDetails] = useState();
   const [PartImages, setPartImages] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -63,7 +63,7 @@ const PartDetails = () => {
         </div>
       ) : PartDetails?.partname ? (
         <div className="mt-8">
-          <div className="grid grid-cols-12 gap-5 items-start">
+          <div className="grid grid-cols-12 items-start gap-5">
             <div className="col-span-12 md:col-span-5">
               <Slider items={PartImages} />
             </div>
@@ -79,10 +79,10 @@ const PartDetails = () => {
                     value={PartDetails?.partno || "No Data"}
                   />
                   <DisplayText title="SKU" value={"No Data"} />
-                  <DisplayText
+                  {/* <DisplayText
                     title="Specifications"
                     value={PartDetails?.Specifications || "No Data"}
-                  />
+                  /> */}
                   <DisplayText
                     title="Warranty"
                     value={PartDetails?.Warranty || "No Data"}
@@ -142,6 +142,16 @@ const PartDetails = () => {
                     value={PartDetails?.year || "No Data"}
                   />
                 </div>
+              </div>
+              <div className="col-span-12 mt-3">
+                <p className="py-1">
+                  Specifications:
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: PartDetails?.Specifications,
+                    }}
+                  ></div>
+                </p>
               </div>
               <div className="col-span-12 mt-3">
                 <div
