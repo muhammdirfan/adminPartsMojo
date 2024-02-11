@@ -7,7 +7,8 @@ import EditModal from "./editModal";
 import { IoMdEye } from "react-icons/io";
 
 export default function CategoriesTable(props) {
-  const { tableData, tableHeader, columnsData, VISIBLE_FIELDS } = props;
+  const { tableData, tableHeader, columnsData, VISIBLE_FIELDS, tableFor } =
+    props;
   const [openModal, setOpenModal] = React.useState(false);
   const [paginationModel, setPaginationModel] = React.useState({
     pageSize: 25,
@@ -17,22 +18,22 @@ export default function CategoriesTable(props) {
   // Define custom action renderers
   const renderEditButton = (params) => (
     <MdEdit
-      className="mx-3 h-6 w-6 rounded p-1 hover:cursor-pointer bg-gray-200 hover:bg-gray-300"
+      className="mx-3 h-6 w-6 rounded bg-gray-200 p-1 hover:cursor-pointer hover:bg-gray-300"
       onClick={() => handleModal("Edit", params.row.id)}
     />
   );
 
   const renderDeleteButton = (params) => (
     <MdDelete
-      className="mx-3 h-6 w-6 rounded p-1 hover:cursor-pointer bg-gray-200 hover:bg-gray-300"
+      className="mx-3 h-6 w-6 rounded bg-gray-200 p-1 hover:cursor-pointer hover:bg-gray-300"
       onClick={() => handleModal("Delete", params.row.id)}
     />
   );
 
   const renderViewButton = (params) => (
     <IoMdEye
-      className="mx-3 h-6 w-6 rounded p-1 hover:cursor-pointer bg-gray-200 hover:bg-gray-300"
-      onClick={() => handleModal("Delete", params.row.id)}
+      className="mx-3 h-6 w-6 rounded bg-gray-200 p-1 hover:cursor-pointer hover:bg-gray-300"
+      onClick={() => handleModal("View", params.row.id)}
     />
   );
 
@@ -57,9 +58,11 @@ export default function CategoriesTable(props) {
         width: 150,
         renderCell: (params) => (
           <div style={{ display: "flex", justifyContent: "start" }}>
-            {renderViewButton(params)}
-            {renderEditButton(params)}
-            {renderDeleteButton(params)}
+            {tableFor === "allParts"
+              ? renderViewButton(params)
+              : (renderViewButton(params),
+                renderEditButton(params),
+                renderDeleteButton(params))}
           </div>
         ),
       },

@@ -34,15 +34,19 @@ const Navbar = (props) => {
             className="text-sm font-normal capitalize text-navy-700 hover:underline dark:text-white dark:hover:text-white"
             to="#"
           >
-            {brandText}
+            {window?.location?.pathname?.includes("/admin/part-details/")
+              ? "Part Details"
+              : brandText}
           </Link>
         </div>
-        <p className="shrink text-[33px] capitalize text-navy-700 dark:text-white pt-10">
+        <p className="shrink pt-10 text-[33px] capitalize text-navy-700 dark:text-white">
           <Link
             to="#"
             className="font-bold capitalize hover:text-navy-700 dark:hover:text-white"
           >
-            {brandText}
+            {window?.location?.pathname?.includes("/admin/part-details/")
+              ? "Part Details"
+              : brandText}
           </Link>
         </p>
       </div>
@@ -148,7 +152,7 @@ const Navbar = (props) => {
               <a
                 target="blank"
                 href="https://horizon-ui.com/?ref=live-free-tailwind-react"
-                className="hover:bg-black px-full linear flex cursor-pointer items-center justify-center rounded-xl py-[11px] font-bold text-navy-700 transition duration-200 hover:text-navy-700 dark:text-white dark:hover:text-white"
+                className="px-full linear flex cursor-pointer items-center justify-center rounded-xl py-[11px] font-bold text-navy-700 transition duration-200 hover:bg-black hover:text-navy-700 dark:text-white dark:hover:text-white"
               >
                 Try Horizon Free
               </a>

@@ -22,6 +22,7 @@ import AllParts from "views/admin/AllParts";
 import ManageParts from "views/admin/ManageParts";
 import Orders from "views/admin/Orders";
 import PartDetails from "views/admin/PartDetails";
+import SearchParts from "views/admin/SearchParts";
 
 const routes = [
   {
@@ -48,9 +49,17 @@ const routes = [
     secondary: true,
   },
   {
+    name: "Search Parts",
+    layout: "/admin",
+    path: "search-parts",
+    // icon: <MdOutlineShoppingCart className="h-6 w-6" />,
+    component: <SearchParts />,
+    secondary: true,
+  },
+  {
     name: "Part Details",
     layout: "/admin",
-    path: "part-details",
+    path: "part-details/:id",
     // icon: <MdOutlineShoppingCart className="h-6 w-6" />,
     component: <PartDetails />,
     secondary: true,
