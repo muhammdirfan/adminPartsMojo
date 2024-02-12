@@ -22,7 +22,7 @@ const SearchParts = () => {
     try {
       setIsloading(true);
       const parts = await fetchAllParts(searchValue);
-      setAllParts(parts?.reverse());
+      setAllParts(parts);
       if (parts?.length) {
         setIsloading(false);
       } else {
@@ -70,7 +70,12 @@ const SearchParts = () => {
     ];
   }, [columnsDataComplex]);
 
-  const getRowId = (row) => (row._id ? row._id : 1);
+  const dataWithIds = allParts?.map((row, index) => ({
+    ...row,
+    id: index + 1, // You can use any method to generate a unique id
+  }));
+
+  // const getRowId = (row) => (row._id ? row._id : 1);
 
   return (
     <div className="mt-5">
@@ -106,10 +111,13 @@ const SearchParts = () => {
         </button>
       </div>
       <div className="my-3 mt-3 grid h-full grid-cols-1 gap-5 xl:grid-cols-2 2xl:grid-cols-3">
+        {
+          console.log(allParts, "allParts")
+        }
         <div className="col-span-12 mt-5 h-fit w-full xl:col-span-12 2xl:col-span-12">
           {allParts?.length ? (
             <DataGrid
-              rows={allParts}
+              rows={dataWithIds}
               columns={columns}
               components={{ Toolbar: GridToolbar }}
               slotProps={{
@@ -120,7 +128,7 @@ const SearchParts = () => {
               disableColumnFilter
               disableColumnSelector
               disableDensitySelector
-              getRowId={getRowId}
+              // getRowId={getRowId}
             />
           ) : (
             <div className="mt-5 flex items-center justify-center">
